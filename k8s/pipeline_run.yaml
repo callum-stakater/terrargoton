@@ -1,0 +1,27 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: terraform-plan
+  namespace: terraform
+spec:
+  pipelineRef:
+    name: terraform-plan
+  resources:
+    - name: terraform-src
+      resourceRef:
+        name: terraform-git-feature
+
+---
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: terraform-apply
+  namespace: terraform
+spec:
+  pipelineRef:
+    name: terraform-apply
+  resources:
+    - name: terraform-src
+      resourceRef:
+        name: terraform-git-main

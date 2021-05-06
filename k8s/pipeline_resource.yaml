@@ -1,0 +1,27 @@
+---
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: terraform-git-main
+  namespace: terraform
+spec:
+  type: git
+  params:
+    - name: revision
+      value: main
+    - name: url
+      value: https://github.com/callum-stakater/terrargoton.git
+
+---
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: terraform-git-feature
+  namespace: terraform
+spec:
+  type: git
+  params:
+    - name: revision
+      value: dev
+    - name: url
+      value: https://github.com/callum-stakater/terrargoton.git

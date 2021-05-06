@@ -1,0 +1,17 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: terraform-apply
+  namespace: terraform
+spec:
+  resources:
+    - name: terraform-src
+      type: git
+  tasks:
+    - name: terraform-apply
+      taskRef:
+        name: terraform-apply
+      resources:
+        inputs:
+          - name: src
+            resource: terraform-src
